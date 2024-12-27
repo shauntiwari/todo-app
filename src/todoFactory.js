@@ -2,8 +2,12 @@ function createToDo(title, description, dueDate, priority, notes) {
 
     let completed = false;
     
-    if (priority = null) {
+    if (priority === null || priority === undefined) {
         priority = "low";
+    }
+
+    if (!title || !dueDate) {
+        throw new Error("Title and due date are required");
     }
     
     function setTitle(newTitle) {
