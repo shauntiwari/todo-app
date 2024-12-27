@@ -24,6 +24,14 @@ function createStorageManager() {
         localStorage.removeItem('todos');
         localStorage.removeItem('lists');
     }
+
+    return {
+        saveTodos,
+        loadTodos,
+        saveLists,
+        loadLists,
+        clearStorage
+    }
 }
 
 export { createStorageManager };
