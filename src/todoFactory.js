@@ -1,6 +1,7 @@
 function createToDo(title, description, dueDate, priority, notes) {
 
     let completed = false;
+    let onTodayList = false;
     
     if (priority === null || priority === undefined) {
         priority = "low";
@@ -58,6 +59,25 @@ function createToDo(title, description, dueDate, priority, notes) {
         completed = !completed;
     }
 
+    function todayTask() {
+        return onTodayList;
+    }
+
+    function toggleTodayTask() {
+        onTodayList = !onTodayList;
+    }
+
+    function toJSON() {
+        return {
+            title: title,
+            description: description,
+            dueDate: dueDate,
+            priority: priority,
+            notes: notes,
+            completed: completed
+        };
+    }
+
     return {getTitle,
             setTitle,
             getDescription,
@@ -69,7 +89,10 @@ function createToDo(title, description, dueDate, priority, notes) {
             getNotes,
             setNotes,
             isCompleted,
-            toggleCompleted
+            toggleCompleted,
+            todayTask,
+            toggleTodayTask,
+            toJSON
     }
 }
 
