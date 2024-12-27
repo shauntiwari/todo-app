@@ -1,3 +1,5 @@
+import { createToDo } from "./todoFactory";
+
 function createDomManager(listManager, storageManager) {
     function createHeaderSection() {
         const header = document.createElement('header');
@@ -80,14 +82,63 @@ function createDomManager(listManager, storageManager) {
     }
  
     function createNewTodo() {
-        // Show modal/form for new todo creation
-        // Implementation depends on your UI design
-    }
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        
+        const form = `
+            <form id="new-todo-form">
+                <input type="text" id="title" placeholder="Title" required>
+                <textarea id="description" placeholder="Description"></textarea>
+                <input type="date" id="dueDate" required>
+                <select id="priority">
+                    <option value="low">Low</option>
+                    <option value="middle">Middle</option>
+                    <option value="high">High</option>
+                </select>
+                <textarea id="notes" placeholder="Notes"></textarea>
+                <button type="submit">Create</button>
+                <button type="button" onclick="this.parentElement.parentElement.remove()">Cancel</button>
+            </form>
+        `;
+        
+        modal.innerHTML = form;
+        document.body.appendChild(modal);
+     
+        document.getElementById('new-todo-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const todo = createToDo(
+                e.target.title.value,
+                e.target.description.value,
+                new Date(e.target.dueDate.value),
+                e.target.priority.value,
+                e.target.notes.value
+            );
+            listManager.addToList(todo, "All Tasks");
+            storageManager.saveTodos(listManager.getListTodos("All Tasks"));
+            refreshUI();
+            modal.remove();
+        });
+     }
  
-    function showTodoDetails(todo) {
-        // Show modal with todo details
-        // Implementation depends on your UI design
-    }
+     function showTodoDetails(todo) {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        
+        const content = `
+            <div class="todo-details">
+                <h3>${todo.getTitle()}</h3>
+                <p><strong>Description:</strong> ${todo.getDescription()}</p>
+                <p><strong>Due Date:</strong> ${todo.getDueDate().toLocaleDateString()}</p>
+                <p><strong>Priority:</strong> ${todo.getPriority()}</p>
+                <p><strong>Notes:</strong> ${todo.getNotes()}</p>
+                <p><strong>Status:</strong> ${todo.isCompleted() ? 'Completed' : 'Pending'}</p>
+                <button onclick="this.parentElement.parentElement.remove()">Close</button>
+            </div>
+        `;
+        
+        modal.innerHTML = content;
+        document.body.appendChild(modal);
+     }
  
     function refreshUI() {
         const main = document.querySelector('main');

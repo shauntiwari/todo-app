@@ -43,6 +43,15 @@ function createListManager() {
         }
         delete lists[listName];
     }
+
+    return {
+        createList,
+        addToList,
+        removeFromList,
+        getListTodos,
+        getAllLists,
+        deleteList
+    }
 }
 
 export { createListManager };

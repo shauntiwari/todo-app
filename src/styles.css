@@ -4,6 +4,103 @@
 }
 
 body {
-    background-color: rebeccapurple;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #333;
+ }
+ 
+ header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+ }
+ 
+ main {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+ }
+ 
+ /* Lists section */
+ #lists-section {
+    background: #f5f6fa;
+    padding: 1rem;
+    border-right: 1px solid #ddd;
+ }
+ 
+ .list {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+ }
+ 
+ .list:hover {
+    background: #eee;
+ }
+ 
+ /* Todos section */
+ #todos-section {
+    padding: 2rem;
+ }
+ 
+ .todo {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+ }
+ 
+ /* Priority colors */
+ .todo.high { border-left: 4px solid #e74c3c; }
+ .todo.middle { border-left: 4px solid #f1c40f; }
+ .todo.low { border-left: 4px solid #2ecc71; }
+ 
+ /* Buttons */
+ button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+ }
+ 
+ button:hover {
+    background: #2980b9;
+ }
+
+ .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-details, #new-todo-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 300px;
+}
+
+input, textarea, select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
 }
   
