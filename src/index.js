@@ -4,9 +4,11 @@ import { createListManager } from "./listManager";
 import { createStorageManager } from "./storageManager";
 import { createDomManager } from "./domManager";
 
+const todoFactory = createToDo;
+
 const listManager = createListManager();
 const storageManager = createStorageManager();
-const domManager = createDomManager(listManager, storageManager);
+const domManager = createDomManager(listManager, storageManager, todoFactory);
 
 const savedLists = storageManager.loadLists();
 const savedTodos = storageManager.loadTodos();

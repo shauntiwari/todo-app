@@ -5,59 +5,76 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #333;
- }
- 
- header {
-    background: #2c3e50;
-    color: white;
-    padding: 1rem;
-    text-align: center;
- }
- 
- main {
     display: grid;
     grid-template-columns: 250px 1fr;
     min-height: 100vh;
- }
+}
  
- /* Lists section */
- #lists-section {
-    background: #f5f6fa;
+header {
+    background: #2c3e50;
+    color: white;
     padding: 1rem;
-    border-right: 1px solid #ddd;
- }
+    grid-column: 1;
+}
  
- .list {
+main {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+ 
+#lists-section {
+    background: #2c3e50;
+    padding: 1rem;
+    color: white;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+}
+ 
+.list {
     padding: 0.8rem;
     margin-bottom: 0.5rem;
-    background: white;
+    color: white;
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s;
- }
+}
  
- .list:hover {
-    background: #eee;
- }
+.list:hover {
+    background: rgba(255, 255, 255, 0.1)
+}
+
+.list.active {
+    background: rgba(255, 255, 255, 0.2);
+}
  
  /* Todos section */
  #todos-section {
+    grid-column: 2;
     padding: 2rem;
- }
+}
  
- .todo {
+.todo {
     display: grid;
-    grid-template-columns: 1fr auto auto;
-    gap: 1rem;
-    align-items: center;
+    grid-template-columns: 4px auto 1fr auto;
     padding: 1rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
     background: white;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
- }
+}
+
+.details-button {
+    margin-left: auto;
+}
+
+.priority-bar {
+    width: 4px;
+    height: 100%;
+}
  
  /* Priority colors */
  .todo.high { border-left: 4px solid #e74c3c; }
@@ -90,6 +107,20 @@ body {
     align-items: center;
 }
 
+.new-todo-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: #b92973;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.new-todo-button:hover {
+    background: #3c29b9 !important;
+}
+
 .todo-details, #new-todo-form {
     background: white;
     padding: 2rem;
@@ -102,5 +133,20 @@ input, textarea, select {
     width: 100%;
     margin-bottom: 1rem;
     padding: 0.5rem;
+}
+
+.lists-container {
+    display: flex;
+    flex-direction: column;
+}
+ 
+.pinned-lists {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 1rem;
+}
+ 
+.custom-lists {
+    margin-top: 1rem;
 }
   
