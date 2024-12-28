@@ -1,9 +1,18 @@
-function createDomManager(listManager, storageManager, createToDo) {
+import { createToDo } from "./todoFactory";
+
+function createDomManager(listManager, storageManager) {
+    
     function createHeaderSection() {
         const header = document.createElement('header');
         const title = document.createElement('h1');
         title.textContent = 'ToDo List';
         header.appendChild(title);
+
+        const newTodoButton = document.createElement('button');
+        newTodoButton.textContent = '+ New Task';
+        newTodoButton.addEventListener('click', createNewTodo);
+        header.appendChild(newTodoButton);
+    
         return header;
     }
  
@@ -38,10 +47,9 @@ function createDomManager(listManager, storageManager, createToDo) {
     
         const newListButton = document.createElement('button');
         newListButton.textContent = '+ New List';
-        newListButton.classList.add('new-list-button');
         newListButton.addEventListener('click', createNewList);
         listsSection.appendChild(newListButton);
-    
+
         return listsSection;
     }
 
@@ -102,22 +110,9 @@ function createDomManager(listManager, storageManager, createToDo) {
                 
         const todosSection = document.createElement('section');
         todosSection.id = 'todos-section';
-        
-        const newTodoButton = document.createElement('button');
-        newTodoButton.type = 'button';
-        newTodoButton.innerHTML = '+ New Task';
-        newTodoButton.classList.add('new-todo-button');
-
-        // Add debug logging
-        newTodoButton.addEventListener('click', () => {
-            console.log('Button clicked');
-            createNewTodo();
-        });
 
         const todoList = document.createElement('div');
         todoList.id = 'todo-list';
-        
-        todosSection.appendChild(newTodoButton);
         todosSection.appendChild(todoList);
         
         return todosSection;

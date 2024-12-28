@@ -8,13 +8,13 @@ body {
     display: grid;
     grid-template-columns: 250px 1fr;
     min-height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
  
 header {
     background: #2c3e50;
     color: white;
     padding: 1rem;
-    grid-column: 1;
 }
  
 main {
@@ -30,7 +30,7 @@ main {
     grid-column: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: calc(100vh - 80px); /* Adjust based on header height */
 }
  
@@ -52,7 +52,7 @@ main {
 }
  
  /* Todos section */
- #todos-section {
+#todos-section {
     grid-column: 2;
     padding: 2rem;
 }
@@ -65,10 +65,6 @@ main {
     align-items: center;
     background: white;
     border-radius: 4px;
-}
-
-.details-button {
-    margin-left: auto;
 }
 
 .priority-bar {
@@ -84,6 +80,7 @@ main {
  /* Buttons */
  button {
     padding: 0.5rem 1rem;
+    margin: 5px 5px;
     border: none;
     border-radius: 4px;
     background: #3498db;
@@ -105,20 +102,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.new-todo-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    background: #b92973;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 1rem;
-}
-
-.new-todo-button:hover {
-    background: #3c29b9 !important;
 }
 
 .todo-details, #new-todo-form {
